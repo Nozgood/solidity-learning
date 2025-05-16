@@ -18,6 +18,10 @@ contract SimpleStorage {
     // static array 
     Person[1] public staticListOfPeople;
 
+    // map
+
+    mapping(string => uint256) public nameToFavoriteNumber;
+
     // memory keyword means that the data of the variable are stored only during the execution of the function, we dont pay gas to store it, they are not on the blockchain, 
     // but only in the RAM
     function addPerson(string memory _name, uint256 _favoriteNumber) public {
@@ -27,6 +31,7 @@ contract SimpleStorage {
         });
 
         listOfPeople.push(newPerson);
+        nameToFavoriteNumber[_name] = _favoriteNumber;
     }
 
     // this function update something so it changes the state of the blockchain, so i have to pay gas
