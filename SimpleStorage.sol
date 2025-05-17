@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.19; // the '^' means we are ok to work with every version that is greater than 0.8.18
+pragma solidity 0.8.19; // the '^' means we are ok to work with every version that is greater than 0.8.18
 
 
 // 0xd9145CCE52D386f254917e481eB44e9943F39138 => contract address
