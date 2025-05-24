@@ -11,7 +11,8 @@ contract FundMe{
     uint256 public minimumUSD = 5e18;
 
     function fund() public payable {
-        require(getConversionRate(msg.value) >= minimumUSD, "insufficiant ether amount"); // 1e18 = 1 ETH = 1000000000000000000 wei = 1 * 1 ** 18; (1 puissance 18)
+        // 1e18 = 1 ETH = 1000000000000000000 wei = 1 * 1 ** 18; (1 puissance 18)
+        require(getConversionRate(msg.value) >= minimumUSD, "insufficient ether amount");
     }
 
     function withdraw() public{}
@@ -32,5 +33,13 @@ contract FundMe{
         (,int256 price,,,) = priceFeed.latestRoundData();
         
         return uint256(price *1e10);
+    }
+
+    receive() external payable {
+        fund();
+    }
+
+    fallback() external payable {
+        fund();
     }
 }
